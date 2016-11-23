@@ -1,0 +1,19 @@
+development: &default
+  adapter: postgresql
+  encoding: unicode
+  database: watchlist_development
+  pool: 5
+  username: postgres
+  password:
+  host: db
+
+test:
+  <<: *default
+  database: watchlist_test
+
+
+production:
+  <<: *default
+  database: watchlist_production
+  username: postgres
+  password: <%= ENV['API_VOLUME_DATABASE_PASSWORD'] %>
