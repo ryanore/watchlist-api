@@ -1,12 +1,12 @@
 # define a command class
 class AuthenticateUser
 
-	# put SimpleCommand before the class' ancestors chain
+  # put SimpleCommand before the class' ancestors chain
   prepend SimpleCommand
 
   # optional, initialize the command with some arguments
   def initialize(email, password)
-    @user = email
+    @email = email
     @password = password
   end
 
@@ -14,15 +14,15 @@ class AuthenticateUser
     JsonWebToken.encode(user_id: user.id) if user
   end
 
-	private
+  private
 
-	attr_accessor :email, :password
+  attr_accessor :email, :password
 
-	def user
-		user = User.find_by_email(email)
-		return user if user && user.authenticate(password)
+  def user
+    user = User.find_by_email(email)
+    return user if user && user.authenticate(password)
 
-		errors.add :user_authentication, 'invalid credentials'
-		nil
-	end
+    errors.add :user_authentication, 'invalid credentials'
+    nil
+  end
 end

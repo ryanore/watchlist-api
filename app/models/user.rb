@@ -9,9 +9,6 @@ class User < ApplicationRecord
     presence: true,
     length: { minimum: 2 }
 
-  validates :accss_token,
-    presence: true
-
   validates :email,
     presence: true,
     uniqueness: true,
