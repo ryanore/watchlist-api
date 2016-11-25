@@ -1,24 +1,5 @@
-# README
+# Watchlist API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Rails 5  API with Postgres DB.  While you could run this standalone with your own postgres DB,  it is built to run within a Docker network.  This code is a git submodule, pulled in to a parent code base and networked with Docker containers.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For information about setup, you may want to start [here &raquo;](https://github.com/ryanore/watchlist)
