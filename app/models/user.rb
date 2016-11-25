@@ -1,14 +1,22 @@
-class User < ApplicationRecord
-  # Assign an API key on create
-  before_create do |user|
-    user.api_key = user.generate_api_key
-  end
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
-  # Generate a unique API key
-  def generate_api_key
-    loop do
-      token = SecureRandom.base64.tr('+/=', 'Qrt')
-      break token unless User.exists?(api_key: token)
-    end
-  end
+class User < ApplicationRecord
+  has_secure_password
+  has_many :movies
+  has_many :lists
+
+  validates :first_name, :last_name,
+    presence: true,
+    length: { minimum: 2 }
+
+  validates :accss_token,
+    presence: true
+
+  validates :email,
+    presence: true,
+    uniqueness: true,
+    format: {
+      with: VALID_EMAIL_REGEX,
+      message: "only valid email address"
+    }
 end
