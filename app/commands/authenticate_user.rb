@@ -11,7 +11,12 @@ class AuthenticateUser
   end
 
   def call
-    JsonWebToken.encode(user) if user
+    tkn = JsonWebToken.encode(user_id: user.id)
+		usr = user.serializable_hash.except!('password_digest')
+		{
+			access_token: tkn,
+			user: usr
+		} if user
   end
 
   private
