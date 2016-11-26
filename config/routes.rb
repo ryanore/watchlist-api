@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :tags
   resources :movies
-  resources :lists
   resources :users
 	post 'authenticate', to: 'authentication#authenticate'
 
