@@ -29,12 +29,18 @@ gem 'simple_command'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-
+	gem 'rubocop', require: false
+  gem 'guard-rubocop'
   # Use RSpec for specs
   gem 'rspec-rails', '>= 3.5.0'
-
   # Use Factory Girl for generating random test data
   gem 'factory_girl_rails'
+end
+
+group :test do
+	gem 'shoulda-matchers', require: false
+	gem 'faker'
+	gem 'guard-rspec', require: false
 end
 
 group :development do

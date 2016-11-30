@@ -1,15 +1,15 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :update, :destroy]
-  before_action :load_user, only: [:index]
+	before_filter :load_user
 
   # GET /movies
   def index
-    @movies = movies
-    if params[:tags]
-      render json: filter_by_tags
-    else
-      render json: @movies
-    end
+		# @movies = movies.all()
+
+		@movies = movies.where(label: '')
+    # render json: @movies
+    #
+
   end
 
   # GET /movies/1
@@ -53,16 +53,11 @@ class MoviesController < ApplicationController
       params.fetch(:movie, {})
     end
 
-    def load_user
-      @user = User.find_by_id(params[:user_id])
-    end
+		def load_user
+	     @user = User.find_by_id(params[:user_id])
+	  end
 
-    def filter_by_tags
-      ptags = ActiveSupport::JSON.decode(params[:tags])
-      @movies.where("array[?] && tags", ptags)
-    end
-
-    def movies
-      @user ? @user.movies : Movie
-    end
+		def movies
+			@user ? @user.movies : Movie
+		end
 end
