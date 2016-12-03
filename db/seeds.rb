@@ -3,8 +3,8 @@
 # #
 # # Examples:
 # #
-User.create!(email: 'ryan@ryanore.com', first_name: 'Ryan', last_name: 'Admin', password: '123456',  role: 'admin')
-User.create!(email: 'ryanoremail@gmail.com', first_name: 'RyanUser', last_name: 'User', password: '123456',  role: 'user')
+User.create!(email: 'ryan@ryanore.com', first_name: 'Ryan', last_name: 'Admin', password: '123456',  role: 1)
+User.create!(email: 'ryanoremail@gmail.com', first_name: 'RyanUser', last_name: 'User', password: '123456',  role: 0)
 
 Tag.create!(label: 'Documentary', user_id: 1)
 Tag.create!(label: 'Funny', user_id: 2)

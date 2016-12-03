@@ -5,6 +5,8 @@ class User < ApplicationRecord
 	has_many :movies
 	has_many :tags
 
+  enum role: [ :user, :admin ]
+
   validates :first_name, :last_name,
     presence: true,
     length: { minimum: 2 }
