@@ -19,6 +19,9 @@ class MoviesController < ApplicationController
 
   # POST /movies
   def create
+    puts 'CRESATE'
+    puts params[:data]
+    puts 'CREATED'
     @movie = Movie.new(movie_params)
 
     if @movie.save
@@ -50,7 +53,26 @@ class MoviesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def movie_params
-      params.fetch(:movie, {})
+      params.require(:movie).permit(
+        :user_id,
+        {tags: []},
+        {
+          data: [
+            :backdrop_path,
+            :overview,
+            :original_title,
+            :original_language,
+            :popularity,
+            :poster_path,
+            :release_date,
+            :title,
+            :video,
+            :vote_average,
+            :vote_count,
+            {genre_ids: []}
+          ]
+        }
+      )
     end
 
     def load_user
