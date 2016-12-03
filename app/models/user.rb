@@ -10,10 +10,10 @@ class User < ApplicationRecord
     length: { minimum: 2 }
 
   validates :email,
-  presence: true,
-  uniqueness: true,
-  format: {
-    with: VALID_EMAIL_REGEX,
-    message: "only valid email address"
-  }
+    presence: true,
+    uniqueness: true,
+    format: {
+      with: VALID_EMAIL_REGEX,
+      message: "only valid email address"
+    }
 end
