@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
   skip_before_action :authenticate_request, only: :create, raise: false
-
+  
   wrap_parameters :user, include: [:json, :name, :password, :password_confirmation, :first_name, :last_name, :role, :email]
 
   # GET /users

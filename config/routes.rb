@@ -9,5 +9,8 @@ Rails.application.routes.draw do
 	end
 
 	post 'authenticate', to: 'authentication#authenticate'
+
+	get 'search', to: 'media#search'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

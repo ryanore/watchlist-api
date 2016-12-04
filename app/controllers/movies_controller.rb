@@ -19,9 +19,6 @@ class MoviesController < ApplicationController
 
   # POST /movies
   def create
-    puts 'CRESATE'
-    puts params[:data]
-    puts 'CREATED'
     @movie = Movie.new(movie_params)
 
     if @movie.save
