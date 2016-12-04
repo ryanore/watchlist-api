@@ -20,6 +20,7 @@ gem 'bcrypt', '~> 3.1.7', require: 'bcrypt'
 gem 'jwt'
 gem 'simple_command'
 gem 'httparty'
+gem 'rswag'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
